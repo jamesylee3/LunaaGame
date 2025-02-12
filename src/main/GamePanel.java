@@ -1,5 +1,7 @@
 package main;
 
+import entity.Player;
+
 import javax.swing.*;
 import java.awt.*;
 import java.security.Key;
@@ -20,6 +22,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     KeyHandler keyH = new KeyHandler();
     Thread gameThread; // allows game to "run" (repeating process)
+    Player player = new Player(this,keyH);
 
     // Set player's default position
     int playerX = 100;
@@ -38,12 +41,27 @@ public class GamePanel extends JPanel implements Runnable {
         gameThread.start();
     }
 
+    // Delta/Accumulator Method for game loop
     @Override
     public void run() {
+        double drawInterval = 1000000000/FPS;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
+
         while(gameThread != null) {
-            
-            update();
-            repaint();
+            currentTime = System.nanoTime();
+
+            delta += (currentTime - lastTime) / drawInterval;
+
+            lastTime = currentTime;
+
+            if (delta >= 1) {
+                update();
+                repaint();
+                delta--;
+            }
+
         }
     }
 
