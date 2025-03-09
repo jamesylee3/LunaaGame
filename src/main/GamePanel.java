@@ -9,22 +9,29 @@ import java.security.Key;
 
 public class GamePanel extends JPanel implements Runnable {
 
+    // Screen
     final int originalTileSize = 16; // tile is 16 pixels
     final int scale = 3; // used to make our game fit the screen better
 
     public final int tileSize = originalTileSize * scale; // tiles are 48x48
     public final int maxScreenCol = 16; // horizontal
     public final int maxScreenRow = 12; // vertical
-
     public final int screenWidth = tileSize * maxScreenCol; // 768
     public final int screenHeight = tileSize * maxScreenRow; // 576
 
+    // World
+    public final int maxWorldCol = 100;
+    public final int maxWorldRow = 50;
+    public final int worldWidth = tileSize * maxWorldCol;
+    public final int worldHeight = tileSize * maxWorldRow;
+
+    // FPS
     final int FPS = 60;
 
     TileManager tileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
     Thread gameThread; // allows game to "run" (repeating process)
-    Player player = new Player(this,keyH);
+    public Player player = new Player(this,keyH);
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
