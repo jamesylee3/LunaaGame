@@ -22,13 +22,15 @@ public class Player extends Entity{
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
 
+        solidArea = new Rectangle(8, 16, 30, 30); // player collision
+
         setDefaultValues();
         getPlayerImage();
     }
 
     public void setDefaultValues() {
-        worldX = gp.tileSize * 25; //starting point x
-        worldY = gp.tileSize * 25; // starting point y
+        worldX = gp.tileSize * 24; //starting point x
+        worldY = gp.tileSize * 24; // starting point y
         speed = 4;
         direction = "down";
     }
@@ -53,21 +55,38 @@ public class Player extends Entity{
         if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
             if (keyH.upPressed) {
                 direction = "up";
-                worldY -= speed;
             }
             else if (keyH.downPressed) {
                 direction = "down";
-                worldY += speed;
             }
             else if (keyH.leftPressed) {
                 direction = "left";
-                worldX -= speed;
             }
             else if (keyH.rightPressed) {
                 direction = "right";
-                worldX += speed;
             }
 
+            // Check tile collision
+            collisionOn = false;
+            gp.cCheck.checkTile(this);
+
+            // IF collision = false, player can move
+            if (collisionOn == false) {
+                switch (direction) {
+                    case "up":
+                        worldY -= speed;
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
+                }
+            }
             spriteCounter++;
             if (spriteCounter > 15) {
                 if (spriteNum == 1) {
