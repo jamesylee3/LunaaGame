@@ -6,7 +6,7 @@ import java.io.IOException;
 public class Fish extends SuperObject{
 
     public Fish() {
-        name = "fish";
+        name = "Fish";
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/objects/fish.png"));
         } catch (IOException e) {
