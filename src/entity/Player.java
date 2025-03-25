@@ -15,8 +15,8 @@ public class Player extends Entity{
     public final int screenX;
     public final int screenY;
 
-    int hasKey = 0;
-    int hasFish = 0;
+    public int hasKey = 0;
+    public int hasFish = 0;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
@@ -116,18 +116,23 @@ public class Player extends Entity{
                 case "Key":
                     hasKey++;
                     gp.obj[i] = null;
-                    System.out.println("Key Count: " + hasKey);
+                    gp.ui.showMessage("Key Obtained");
                     break;
                 case "Door":
                     if (hasKey > 0) {
                         gp.obj[i] = null;
                         hasKey--;
+                        gp.ui.showMessage("Door unlocked using Key");
                     }
-                    System.out.println("Key Count: " + hasKey);
+                    else {
+                        gp.ui.showMessage("A Key is needed to unlock the Door");
+                    }
                     break;
                 case "Fish":
                     gp.obj[i] = null;
                     hasFish++;
+                    gp.ui.showMessage("Fish Obtained");
+                    break;
             }
         }
     }

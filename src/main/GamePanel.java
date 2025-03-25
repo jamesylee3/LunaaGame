@@ -29,11 +29,14 @@ public class GamePanel extends JPanel implements Runnable {
     // FPS
     final int FPS = 60;
 
+    // System
     TileManager tileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
-    Thread gameThread; // allows game to "run" (repeating process)
     public CollisionCheck cCheck = new CollisionCheck(this);
     public AssetSetter aSetter = new AssetSetter(this);
+    public UI ui = new UI(this);
+    Thread gameThread; // allows game to "run" (repeating process)
+
     public Player player = new Player(this,keyH);
     public SuperObject obj[] = new SuperObject[10];
 
@@ -85,15 +88,20 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
-        tileM.draw(g2);
 
+        tileM.draw(g2); // Draw Tiles
+
+        // Draw Objects
         for (int i = 0; i < obj.length; i++) {
             if (obj[i] != null) {
                 obj[i].draw(g2, this);
             }
         }
 
-        player.draw(g2);
+        player.draw(g2); // Draw Player
+
+        ui.draw(g2);
+
         g2.dispose(); // performs object cleanup
     }
 }
