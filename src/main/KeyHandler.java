@@ -4,12 +4,15 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
-
+    GamePanel gp;
     public boolean leftPressed, rightPressed, upPressed, downPressed;
+
+    public KeyHandler(GamePanel gp) {
+        this.gp = gp;
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
 
     @Override
@@ -26,6 +29,14 @@ public class KeyHandler implements KeyListener {
         }
         if (code == KeyEvent.VK_D) {
             rightPressed = true;
+        }
+        if (code == KeyEvent.VK_ESCAPE) {
+            if (gp.gameState == gp.playState) {
+                gp.gameState = gp.pauseState;
+            }
+            else if (gp.gameState == gp.pauseState) {
+                gp.gameState = gp.playState;
+            }
         }
     }
 

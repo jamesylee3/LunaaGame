@@ -10,6 +10,7 @@ import java.text.DecimalFormat;
 public class UI {
 
     GamePanel gp;
+    Graphics2D g2;
     Font comic_40;
     BufferedImage keyImage;
     BufferedImage fishImage;
@@ -49,10 +50,14 @@ public class UI {
         g2.drawString("= " + gp.player.hasFish, 70, 120);
 
         // Play Time
-        playTime += (double) 1 / 60;
-        g2.setFont(g2.getFont().deriveFont(30F));
-        g2.drawString("Time:" + dFormat.format(playTime), 600,55);
-
+        if (gp.gameState == gp.pauseState) {
+            g2.setFont(g2.getFont().deriveFont(30F));
+            g2.drawString("Time:" + dFormat.format(playTime), 600, 55);
+        } else if (gp.gameState == gp.playState) {
+            playTime += (double) 1 / 60;
+            g2.setFont(g2.getFont().deriveFont(30F));
+            g2.drawString("Time:" + dFormat.format(playTime), 600, 55);
+        }
         // UI Message
         if (messageOn == true) {
             g2.setFont(g2.getFont().deriveFont(20F));
@@ -63,6 +68,12 @@ public class UI {
                 messageTime = 0;
                 messageOn = false;
             }
+        }
+
+        // Game State
+        if (gp.gameState == gp.pauseState) {
+            g2.setFont(g2.getFont().deriveFont(80F));
+            g2.drawString("PAUSED", 225, 300);
         }
     }
 }
