@@ -38,6 +38,11 @@ public class KeyHandler implements KeyListener {
                 gp.gameState = gp.playState;
             }
         }
+        if (code == KeyEvent.VK_R) {
+            if (gp.gameState == gp.titleState) {
+                gp.gameState = gp.playState;
+            }
+        }
     }
 
     @Override
