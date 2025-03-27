@@ -1,10 +1,13 @@
 package main;
 
 import object.Fish;
+import object.Health;
 import object.Key;
+import object.SuperObject;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.nio.Buffer;
 import java.text.DecimalFormat;
 
 public class UI {
@@ -14,6 +17,8 @@ public class UI {
     Font comic_40;
     BufferedImage keyImage;
     BufferedImage fishImage;
+    BufferedImage lunaaFace;
+    BufferedImage hpFive, hpFour, hpThree, hpTwo, hpOne, hpZero;
     public boolean messageOn = false;
     public String message = "";
     int messageTime = 0;
@@ -32,6 +37,15 @@ public class UI {
         comic_40 = new Font("Comic Sans MS", Font.PLAIN, 40);
         Fish fish = new Fish();
         fishImage = fish.image;
+
+        SuperObject health = new Health(gp);
+        hpFive = health.image;
+        hpFour = health.image2;
+        hpThree = health.image3;
+        hpTwo = health.image4;
+        hpOne = health.image5;
+        hpZero = health.image6;
+        lunaaFace = health.image7;
     }
 
     public void showMessage(String text) {
@@ -96,8 +110,6 @@ public class UI {
                 g2.setColor(new Color(72,60,50));
                 g2.drawString(">", 305, 450);
             }
-
-
         }
 
         // Play State
@@ -134,6 +146,20 @@ public class UI {
                     messageTime = 0;
                     messageOn = false;
                 }
+            }
+
+            // PLayer Health
+            g2.drawImage(lunaaFace, 3, 500, gp.tileSize * 2, gp.tileSize * 2, null);
+            if (gp.player.health == gp.player.maxHealth && gp.player.health >= 81) {
+                g2.drawImage(hpFive, 75, 495, gp.tileSize * 5, gp.tileSize * 3, null);
+            } else if (gp.player.health <= 80 && gp.player.health >= 61) {
+                g2.drawImage(hpFour, 75, 495, gp.tileSize * 5, gp.tileSize * 3, null);
+            } else if (gp.player.health <= 60 && gp.player.health >= 41) {
+                g2.drawImage(hpThree, 75, 495, gp.tileSize * 5, gp.tileSize * 3, null);
+            } else if (gp.player.health <= 40 && gp.player.health >= 21) {
+                g2.drawImage(hpTwo, 75, 495, gp.tileSize * 5, gp.tileSize * 3, null);
+            } else if (gp.player.health <= 20 && gp.player.health >= 1) {
+                g2.drawImage(hpOne, 75, 495, gp.tileSize * 5, gp.tileSize * 3, null);
             }
         }
 
