@@ -17,6 +17,7 @@ public class UI {
     public boolean messageOn = false;
     public String message = "";
     int messageTime = 0;
+    public int commandNum = 0;
 
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.0");
@@ -81,12 +82,20 @@ public class UI {
             g2.drawString("Start Game", 262, 392);
             g2.setColor(new Color(239,223,187));
             g2.drawString("Start Game", 260,390);
+            if (commandNum == 0) {
+                g2.setColor(new Color(72,60,50));
+                g2.drawString(">", 225, 390);
+            }
 
             g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
             g2.setColor(new Color(72,60,50));
             g2.drawString("Quit", 342, 452);
             g2.setColor(new Color(239,223,187));
             g2.drawString("Quit", 340,450);
+            if (commandNum == 1) {
+                g2.setColor(new Color(72,60,50));
+                g2.drawString(">", 305, 450);
+            }
 
 
         }
