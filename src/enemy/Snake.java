@@ -38,7 +38,7 @@ public class Snake extends Entity {
 
     public void setAction() {
         actionCounter++;
-        // Direction change 
+        // Direction change
         if (actionCounter == 30) {
             Random random = new Random();
             int i = random.nextInt(100) + 1;

@@ -30,6 +30,9 @@ public class CollisionCheck {
             if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
                 entity.collisionOn = true;
             }
+            if (gp.tileM.tile[tileNum1].damage == true || gp.tileM.tile[tileNum2].damage == true) {
+                gp.player.health -= 1;
+            }
             break;
             case "down":
                 entityBottomRow = (entityBottomWorldY + entity.speed) / gp.tileSize;
@@ -37,6 +40,9 @@ public class CollisionCheck {
                 tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
                     entity.collisionOn = true;
+                }
+                if (gp.tileM.tile[tileNum1].damage == true || gp.tileM.tile[tileNum2].damage == true) {
+                    gp.player.health -= 1;
                 }
                 break;
             case "left":
@@ -46,6 +52,9 @@ public class CollisionCheck {
                 if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
                     entity.collisionOn = true;
                 }
+                if (gp.tileM.tile[tileNum1].damage == true || gp.tileM.tile[tileNum2].damage == true) {
+                    gp.player.health -= 1;
+                }
                 break;
             case "right":
                 entityRightCol = (entityRightWorldX + entity.speed) / gp.tileSize;
@@ -53,6 +62,9 @@ public class CollisionCheck {
                 tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
                     entity.collisionOn = true;
+                }
+                if (gp.tileM.tile[tileNum1].damage == true || gp.tileM.tile[tileNum2].damage == true) {
+                    gp.player.health -= 1;
                 }
                 break;
         }

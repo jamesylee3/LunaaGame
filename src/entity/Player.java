@@ -147,6 +147,7 @@ public class Player extends Entity{
     public void interactEnemy(int i) {
         if (i != 999) {
             System.out.println("Hitting enemy");
+            health -= 1;
         }
     }
 
