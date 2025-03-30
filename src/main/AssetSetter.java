@@ -1,5 +1,6 @@
 package main;
 
+import enemy.Snake;
 import object.Door;
 import object.Fish;
 import object.Key;
@@ -28,5 +29,12 @@ public class AssetSetter {
         gp.obj[3] = new Fish();
         gp.obj[3].worldX = 4 * gp.tileSize;
         gp.obj[3].worldY = 3 * gp.tileSize;
+
+    }
+
+    public void setEnemy() {
+        gp.enemy[0] = new Snake(gp);
+        gp.enemy[0].worldX = 25 * gp.tileSize ;
+        gp.enemy[0].worldY = 25 * gp.tileSize;
     }
 }

@@ -19,6 +19,7 @@ public class Player extends Entity{
     public int hasFish = 0;
 
     public Player(GamePanel gp, KeyHandler keyH) {
+        super(gp);
         this.gp = gp;
         this.keyH = keyH;
 
@@ -82,6 +83,10 @@ public class Player extends Entity{
             int objIndex = gp.cCheck.checkObject(this, true);
             pickUpObject(objIndex);
 
+            // Check Enemy Collision
+            int enemyIndex = gp.cCheck.checkEntity(this,gp.enemy);
+            interactEnemy(enemyIndex);
+
             // IF collision = false, player can move
             if (collisionOn == false) {
                 switch (direction) {
@@ -107,7 +112,6 @@ public class Player extends Entity{
                     spriteNum = 1;
                 }
                 spriteCounter = 0;
-
             }
         }
     }
@@ -137,6 +141,12 @@ public class Player extends Entity{
                     gp.ui.showMessage("Fish Obtained");
                     break;
             }
+        }
+    }
+
+    public void interactEnemy(int i) {
+        if (i != 999) {
+            System.out.println("Hitting enemy");
         }
     }
 

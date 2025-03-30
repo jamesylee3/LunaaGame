@@ -150,7 +150,7 @@ public class UI {
 
             // PLayer Health
             g2.drawImage(lunaaFace, 3, 500, gp.tileSize * 2, gp.tileSize * 2, null);
-            if (gp.player.health == gp.player.maxHealth && gp.player.health >= 81) {
+            if (gp.player.health <= gp.player.maxHealth && gp.player.health >= 81) {
                 g2.drawImage(hpFive, 75, 495, gp.tileSize * 5, gp.tileSize * 3, null);
             } else if (gp.player.health <= 80 && gp.player.health >= 61) {
                 g2.drawImage(hpFour, 75, 495, gp.tileSize * 5, gp.tileSize * 3, null);
