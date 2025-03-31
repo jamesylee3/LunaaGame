@@ -13,6 +13,7 @@ public class Snake extends Entity {
     public Snake(GamePanel gp) {
         super(gp);
 
+        collisionType = 1;
         direction = "down";
         speed = 1;
         solidAreaDefaultX = solidArea.x;

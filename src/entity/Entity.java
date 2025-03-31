@@ -21,12 +21,15 @@ public class Entity {
     public int solidAreaDefaultX, solidAreaDefaultY;
 
     public boolean collisionOn = false;
+    public int collisionType;
 
     public int actionCounter = 0;
 
     // Character Status
     public int maxHealth;
     public int health;
+
+
 
     public Entity(GamePanel gp) {
         this.gp = gp;
@@ -41,6 +44,11 @@ public class Entity {
         gp.cCheck.checkTile(this);
         gp.cCheck.checkObject(this,false);
         gp.cCheck.checkPlayer(this);
+        boolean contactPlayer = gp.cCheck.checkPlayer(this);
+
+        if (this.collisionType == 1 && contactPlayer == true) {
+            gp.player.health -= 1;
+        }
 
         if (collisionOn == false) {
             switch (direction) {
