@@ -35,8 +35,8 @@ public class Player extends Entity{
     }
 
     public void setDefaultValues() {
-        worldX = gp.tileSize * 24; //starting point x
-        worldY = gp.tileSize * 24; // starting point y
+        worldX = gp.tileSize * 25; //starting point x
+        worldY = gp.tileSize * 25; // starting point y
         speed = 4;
         direction = "down";
         maxHealth = 100;
@@ -80,6 +80,7 @@ public class Player extends Entity{
             collisionOn = false;
             gp.cCheck.checkTile(this);
 
+
             // Check object collision
             int objIndex = gp.cCheck.checkObject(this, true);
             pickUpObject(objIndex);
@@ -118,7 +119,7 @@ public class Player extends Entity{
         if (gp.player.health <= 0) {
             gp.gameState = gp.gameOverState;
         }
-        if (gp.player.hasFish == 1) {
+        if (gp.player.hasFish == 5) {
             gp.gameState = gp.gameCompleteState;
         }
     }

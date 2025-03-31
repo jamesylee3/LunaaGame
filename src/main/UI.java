@@ -136,20 +136,9 @@ public class UI {
                 g2.drawString("Time:" + dFormat.format(playTime), 600, 55);
             }
 
-            // UI Message
-            if (messageOn == true) {
-                g2.setFont(g2.getFont().deriveFont(20F));
-                g2.drawString(message, 300, 100);
-                messageTime++;
-
-                if (messageTime > 180) {
-                    messageTime = 0;
-                    messageOn = false;
-                }
-            }
-
             // PLayer Health
-            g2.drawString("HP:" + gp.player.health, 100, 495);
+            g2.setColor(Color.red);
+            g2.drawString("HP:" + gp.player.health, 80, 520);
             g2.drawImage(lunaaFace, 3, 500, gp.tileSize * 2, gp.tileSize * 2, null);
             if (gp.player.health <= gp.player.maxHealth && gp.player.health >= 81) {
                 g2.drawImage(hpFive, 75, 495, gp.tileSize * 5, gp.tileSize * 3, null);
@@ -161,6 +150,19 @@ public class UI {
                 g2.drawImage(hpTwo, 75, 495, gp.tileSize * 5, gp.tileSize * 3, null);
             } else if (gp.player.health <= 20 && gp.player.health >= 1) {
                 g2.drawImage(hpOne, 75, 495, gp.tileSize * 5, gp.tileSize * 3, null);
+            }
+
+            // UI Message
+            if (messageOn == true) {
+                g2.setColor(Color.white);
+                g2.setFont(g2.getFont().deriveFont(20F));
+                g2.drawString(message, 15, 200);
+                messageTime++;
+
+                if (messageTime > 180) {
+                    messageTime = 0;
+                    messageOn = false;
+                }
             }
         }
 
