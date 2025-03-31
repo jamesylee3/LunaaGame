@@ -30,6 +30,10 @@ public class AssetSetter {
         gp.obj[3].worldX = 4 * gp.tileSize;
         gp.obj[3].worldY = 3 * gp.tileSize;
 
+        gp.obj[4] = new Fish();
+        gp.obj[4].worldX = 25 * gp.tileSize;
+        gp.obj[4].worldY = 25 * gp.tileSize;
+
     }
 
     public void setEnemy() {

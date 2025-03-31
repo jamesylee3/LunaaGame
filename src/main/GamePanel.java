@@ -48,6 +48,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int titleState = 0;
     public final int playState = 1;
     public final int pauseState = 2;
+    public final int gameOverState = 3;
+    public final int gameCompleteState = 4;
 
     public GamePanel() {
         this.setBackground(Color.black);
@@ -61,6 +63,13 @@ public class GamePanel extends JPanel implements Runnable {
         aSetter.setObject();
         aSetter.setEnemy();
         gameState = titleState;
+    }
+
+    public void restartGame() {
+        player.setDefaultValues();
+        aSetter.setEnemy();
+        aSetter.setObject();
+        ui.playTime = 0;
     }
 
     public void startGameThread() {
@@ -104,11 +113,6 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
         }
-
-        if (gameState == pauseState) {
-
-        }
-
     }
 
     public void paintComponent(Graphics g) {

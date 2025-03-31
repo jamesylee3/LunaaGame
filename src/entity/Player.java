@@ -39,9 +39,10 @@ public class Player extends Entity{
         worldY = gp.tileSize * 24; // starting point y
         speed = 4;
         direction = "down";
-
         maxHealth = 100;
         health = maxHealth;
+        hasFish = 0;
+        hasKey = 0;
     }
 
     public void getPlayerImage() {
@@ -113,6 +114,12 @@ public class Player extends Entity{
                 }
                 spriteCounter = 0;
             }
+        }
+        if (gp.player.health <= 0) {
+            gp.gameState = gp.gameOverState;
+        }
+        if (gp.player.hasFish == 1) {
+            gp.gameState = gp.gameCompleteState;
         }
     }
 

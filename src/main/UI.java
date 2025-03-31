@@ -170,5 +170,73 @@ public class UI {
             g2.setFont(g2.getFont().deriveFont(80F));
             g2.drawString("PAUSED", 225, 300);
         }
+
+        // Game Over State
+        if (gp.gameState == gp.gameOverState) {
+            // Background
+            g2.setColor(new Color(80,0,0,120));
+            g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+            // Game Over Text
+            g2.setColor(Color.black);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD,80F));
+            g2.drawString("GAME OVER", 140-4, 250-4); // Shadow
+            g2.setColor(Color.white);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD,80F));
+            g2.drawString("GAME OVER", 140, 250); // Main
+            // Restart Game
+            g2.setFont(g2.getFont().deriveFont(50f));
+            g2.setColor(Color.black);
+            g2.drawString("Restart", 300-4,350-4);
+            g2.setColor(Color.WHITE);
+            g2.drawString("Restart", 300,350);
+            if (commandNum == 0) {
+                g2.drawString(">", 260,350);
+            }
+            // Main Menu
+            g2.setFont(g2.getFont().deriveFont(50f));
+            g2.setColor(Color.black);
+            g2.drawString("Main Menu", 260-4,420-4);
+            g2.setColor(Color.WHITE);
+            g2.drawString("Main Menu", 260,420);
+            if (commandNum == 1) {
+                g2.drawString(">", 220,420);
+            }
+        }
+
+        // Game Complete State
+        if (gp.gameState == gp.gameCompleteState) {
+            // Background
+            g2.setColor(new Color(0,80,0,120));
+            g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+            // You Won Text
+            g2.setColor(Color.black);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD,100F));
+            g2.drawString("YOU WON!", 120-4, 200-4); // Shadow
+            g2.setColor(Color.yellow);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD,100F));
+            g2.drawString("YOU WON!", 120, 200); // Main
+            // Main Menu
+            g2.setFont(g2.getFont().deriveFont(50f));
+            g2.setColor(Color.black);
+            g2.drawString("Main Menu", 260-3,350-3);
+            g2.setColor(Color.WHITE);
+            g2.drawString("Main Menu", 260,350);
+            if (commandNum == 0) {
+                g2.drawString(">", 220,350);
+            }
+            // Quit
+            g2.setFont(g2.getFont().deriveFont(50f));
+            g2.setColor(Color.black);
+            g2.drawString("Quit", 325-3,420-3);
+            g2.setColor(Color.WHITE);
+            g2.drawString("Quit", 325,420);
+            if (commandNum == 1) {
+                g2.drawString(">", 285,420);
+            }
+            // Time Text
+            g2.setColor(Color.white);
+            g2.setFont(g2.getFont().deriveFont(Font.ITALIC,35F));
+            g2.drawString("YOUR TIME WAS:" + dFormat.format(playTime), 190,260);
+        }
     }
 }
