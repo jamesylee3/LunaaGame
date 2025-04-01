@@ -40,7 +40,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     // Entity and Object
     public Player player = new Player(this,keyH);
-    public SuperObject obj[] = new SuperObject[15];
+    public SuperObject obj[] = new SuperObject[20];
     public Entity enemy[] = new Entity[20];
 
     // Game State

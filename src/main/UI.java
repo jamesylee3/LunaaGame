@@ -1,10 +1,7 @@
 package main;
 
 import enemy.Snake;
-import object.Fish;
-import object.Health;
-import object.Key;
-import object.SuperObject;
+import object.*;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -18,6 +15,7 @@ public class UI {
     Font comic_40;
     BufferedImage keyImage;
     BufferedImage fishImage;
+    BufferedImage potionImage;
     BufferedImage lunaaFace;
     BufferedImage hpFive, hpFour, hpThree, hpTwo, hpOne, hpZero;
     public boolean messageOn = false;
@@ -30,6 +28,9 @@ public class UI {
 
     public UI(GamePanel gp) {
         this.gp = gp;
+
+        Potion potion = new Potion();
+        potionImage = potion.image;
 
         comic_40 = new Font("Comic Sans MS", Font.PLAIN, 40);
         Key key = new Key();
@@ -272,7 +273,7 @@ public class UI {
             String instructFive = "the doors where the fish are kept.";
             String instructSix = "2. Avoid Hazards - Touching snakes or walking on lava will deal a great deal of damage so";
             String instructSeven = "be sure to avoid them at all costs.";
-            String instructEight = "3. Healing - Make sure to look out for potions and use them if your health is getting low.";
+            String instructEight = "3. Healing - Look out for canned food and use them if your health is getting low.";
             String instructNine = "4. Collect Fish - Once Lunaa gathers all 5 fish, you win the game!";
 
             g2.setColor(new Color(72,60,50));
@@ -285,9 +286,9 @@ public class UI {
             g2.drawString(instructSix, 20, 310);
             g2.drawString(instructSeven, 20, 330);
             g2.drawString(instructEight, 20, 360);
-            g2.drawImage(keyImage, 20, 365, gp.tileSize - 10, gp.tileSize - 10, null);
+            g2.drawImage(potionImage, 22, 360, gp.tileSize + 2, gp.tileSize + 2, null);
             g2.drawString(instructNine, 20, 420);
-            g2.drawImage(fishImage, 20, 425, gp.tileSize - 10, gp.tileSize - 10, null);
+            g2.drawImage(fishImage, 22, 420, gp.tileSize, gp.tileSize, null);
             // Back to Menu
             g2.setFont(g2.getFont().deriveFont(50f));
             g2.setColor(new Color(72,60,50));

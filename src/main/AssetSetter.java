@@ -4,6 +4,7 @@ import enemy.Snake;
 import object.Door;
 import object.Fish;
 import object.Key;
+import object.Potion;
 
 public class AssetSetter {
 
@@ -73,6 +74,18 @@ public class AssetSetter {
         gp.obj[14] = new Key();
         gp.obj[14].worldX = 3 * gp.tileSize;
         gp.obj[14].worldY = 42 * gp.tileSize;
+
+        gp.obj[15] = new Potion();
+        gp.obj[15].worldX = 2 * gp.tileSize;
+        gp.obj[15].worldY = 33 * gp.tileSize;
+
+        gp.obj[16] = new Potion();
+        gp.obj[16].worldX = 44 * gp.tileSize;
+        gp.obj[16].worldY = 34 * gp.tileSize;
+
+        gp.obj[17] = new Potion();
+        gp.obj[17].worldX = 46 * gp.tileSize;
+        gp.obj[17].worldY = 9 * gp.tileSize;
     }
 
     public void setEnemy() {

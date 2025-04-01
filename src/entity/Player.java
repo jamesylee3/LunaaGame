@@ -148,6 +148,14 @@ public class Player extends Entity{
                     hasFish++;
                     gp.ui.showMessage("Fish Obtained");
                     break;
+                case "Potion":
+                    gp.player.health += 30;
+                    if (gp.player.health > maxHealth) {
+                        gp.player.health = 100;
+                    }
+                    gp.obj[i] = null;
+                    gp.ui.showMessage("+30 HP");
+                    break;
             }
         }
     }
