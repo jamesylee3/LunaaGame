@@ -42,17 +42,25 @@ public class KeyHandler implements KeyListener {
             }
         }
 
+        // Instruct State
+        if (gp.gameState == gp.instructState) {
+            gp.ui.commandNum = 3;
+            if (code == KeyEvent.VK_ENTER) {
+                gp.gameState = gp.titleState;
+            }
+        }
+
         // Title State
         if (gp.gameState == gp.titleState) {
             if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
                 if (gp.ui.commandNum < 0) {
-                    gp.ui.commandNum = 1;
+                    gp.ui.commandNum = 2;
                 }
             }
             if (code == KeyEvent.VK_S) {
                 gp.ui.commandNum++;
-                if (gp.ui.commandNum > 1) {
+                if (gp.ui.commandNum > 2) {
                     gp.ui.commandNum = 0;
                 }
             }
@@ -61,10 +69,14 @@ public class KeyHandler implements KeyListener {
                     gp.gameState = gp.playState;
                 }
                 if (gp.ui.commandNum == 1) {
+                    gp.gameState = gp.instructState;
+                }
+                if (gp.ui.commandNum == 2) {
                     System.exit(0);
                 }
             }
         }
+
 
         // Game Over State
         if (gp.gameState == gp.gameOverState) {

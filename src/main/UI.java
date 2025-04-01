@@ -1,5 +1,6 @@
 package main;
 
+import enemy.Snake;
 import object.Fish;
 import object.Health;
 import object.Key;
@@ -101,14 +102,23 @@ public class UI {
                 g2.drawString(">", 225, 390);
             }
 
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
             g2.setColor(new Color(72,60,50));
-            g2.drawString("Quit", 342, 452);
+            g2.drawString("Instructions", 252, 450);
             g2.setColor(new Color(239,223,187));
-            g2.drawString("Quit", 340,450);
+            g2.drawString("Instructions", 250,450);
             if (commandNum == 1) {
                 g2.setColor(new Color(72,60,50));
-                g2.drawString(">", 305, 450);
+                g2.drawString(">", 215, 450);
+            }
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
+            g2.setColor(new Color(72,60,50));
+            g2.drawString("Quit", 342, 510);
+            g2.setColor(new Color(239,223,187));
+            g2.drawString("Quit", 340,510);
+            if (commandNum == 2) {
+                g2.setColor(new Color(72,60,50));
+                g2.drawString(">", 305, 510);
             }
         }
 
@@ -239,6 +249,55 @@ public class UI {
             g2.setColor(Color.white);
             g2.setFont(g2.getFont().deriveFont(Font.ITALIC,35F));
             g2.drawString("YOUR TIME WAS:" + dFormat.format(playTime), 190,260);
+        }
+        // Instruct State
+        if (gp.gameState == gp.instructState) {
+            // Background
+            g2.setColor(new Color(174, 198,  207));
+            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+            // Instruction Title
+            g2.setFont(g2.getFont().deriveFont(Font.ITALIC,60F));
+            // How to Play Shadow
+            g2.setColor(new Color(72,60,50));
+            g2.drawString("How to Play", 58, 93);
+            // How to Play
+            g2.setColor(new Color(239,223,187));
+            g2.drawString("How to Play", 55, 90);
+            // Description
+            g2.setFont(g2.getFont().deriveFont(18F));
+            String instructOne = "Welcome to Lunaa's Fishy Adventure! In this game you will play as Lunaa, the adventurous";
+            String instructTwo = "cat. Your objective is to collect all five fish hidden across the island. But be careful there";
+            String instructThree = "are dangers that you must avoid in order to survive!";
+            String instructFour = "1. Collect the Keys - In order to reach the fish, you must first find the hidden keys to unlock";
+            String instructFive = "the doors where the fish are kept.";
+            String instructSix = "2. Avoid Hazards - Touching snakes or walking on lava will deal a great deal of damage so";
+            String instructSeven = "be sure to avoid them at all costs.";
+            String instructEight = "3. Healing - Make sure to look out for potions and use them if your health is getting low.";
+            String instructNine = "4. Collect Fish - Once Lunaa gathers all 5 fish, you win the game!";
+
+            g2.setColor(new Color(72,60,50));
+            g2.drawString(instructOne, 20,150);
+            g2.drawString(instructTwo, 20, 170);
+            g2.drawString(instructThree, 20, 190);
+            g2.drawString(instructFour, 20, 230);
+            g2.drawString(instructFive, 20, 250);
+            g2.drawImage(keyImage, 20, 255, gp.tileSize - 10, gp.tileSize - 10, null);
+            g2.drawString(instructSix, 20, 310);
+            g2.drawString(instructSeven, 20, 330);
+            g2.drawString(instructEight, 20, 360);
+            g2.drawImage(keyImage, 20, 365, gp.tileSize - 10, gp.tileSize - 10, null);
+            g2.drawString(instructNine, 20, 420);
+            g2.drawImage(fishImage, 20, 425, gp.tileSize - 10, gp.tileSize - 10, null);
+            // Back to Menu
+            g2.setFont(g2.getFont().deriveFont(50f));
+            g2.setColor(new Color(72,60,50));
+            g2.drawString("Back", 320 - 2,520 - 2);
+            g2.setColor(new Color(239,223,187));
+            g2.drawString("Back", 320,520);
+            g2.setColor(new Color(72,60,50));
+            if (commandNum == 3) {
+                g2.drawString(">", 280, 520);
+            }
         }
     }
 }
