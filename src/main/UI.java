@@ -275,8 +275,10 @@ public class UI {
             String instructSeven = "be sure to avoid them at all costs.";
             String instructEight = "3. Healing - Look out for canned food and use them if your health is getting low.";
             String instructNine = "4. Collect Fish - Once Lunaa gathers all 5 fish, you win the game!";
+            String directions = "5. Directions - UP: W / Down: S / Left: A / Right: D";
 
             g2.setColor(new Color(72,60,50));
+            g2.drawString(directions, 20,480);
             g2.drawString(instructOne, 20,150);
             g2.drawString(instructTwo, 20, 170);
             g2.drawString(instructThree, 20, 190);
@@ -288,16 +290,16 @@ public class UI {
             g2.drawString(instructEight, 20, 360);
             g2.drawImage(potionImage, 22, 360, gp.tileSize + 2, gp.tileSize + 2, null);
             g2.drawString(instructNine, 20, 420);
-            g2.drawImage(fishImage, 22, 420, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(fishImage, 22, 415, gp.tileSize, gp.tileSize, null);
             // Back to Menu
             g2.setFont(g2.getFont().deriveFont(50f));
             g2.setColor(new Color(72,60,50));
-            g2.drawString("Back", 320 - 2,520 - 2);
+            g2.drawString("Back", 320 + 2,540 + 2);
             g2.setColor(new Color(239,223,187));
-            g2.drawString("Back", 320,520);
+            g2.drawString("Back", 320,540);
             g2.setColor(new Color(72,60,50));
             if (commandNum == 3) {
-                g2.drawString(">", 280, 520);
+                g2.drawString(">", 280, 540);
             }
         }
     }
